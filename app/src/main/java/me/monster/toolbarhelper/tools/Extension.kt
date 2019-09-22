@@ -2,6 +2,7 @@ package me.monster.toolbarhelper.tools
 
 import android.content.res.Resources
 import android.util.TypedValue
+import android.view.View
 
 /**
  * @description
@@ -13,4 +14,16 @@ fun Int.toPix(): Int {
         this.toFloat(),
         Resources.getSystem().displayMetrics
     ).toInt()
+}
+
+fun View.visible() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun View.inVisible() {
+    this.visibility = View.INVISIBLE
 }

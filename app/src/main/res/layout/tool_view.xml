@@ -28,4 +28,28 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="阅读列表" />
 
+    <TextView
+        android:id="@+id/tv_tool_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tool_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_tool_title"
+        tools:text="扫描" />
+
+    <ImageView
+        android:id="@+id/img_tool_menu"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tool_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_tool_title"
+        tools:src="@drawable/ic_send_black_24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
