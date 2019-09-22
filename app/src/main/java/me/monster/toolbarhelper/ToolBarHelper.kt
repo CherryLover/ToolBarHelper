@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import me.monster.toolbarhelper.tools.ToolClickListener
+import me.monster.toolbarhelper.tools.ToolViewActions
 import me.monster.toolbarhelper.tools.toPix
 import me.monster.toolbarhelper.view.ToolView
 
@@ -12,7 +14,8 @@ import me.monster.toolbarhelper.view.ToolView
  * @description
  * @author: Created jiangjiwei in 2019-09-20 14:53
  */
-class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: String = "") {
+class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: String = ""): ToolViewActions {
+
     private val toolView = ToolView(rootView.context)
 
     init {
@@ -50,7 +53,19 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
         }
     }
 
-    fun setTitle(title: String) {
+    fun setListener(listener: ToolClickListener) {
+        toolView.listener = listener
+    }
+
+    override fun setMenu(menu: String) {
+        toolView.setMenu(menu)
+    }
+
+    override fun setMenuImg(id: Int) {
+        toolView.setMenuImg(id)
+    }
+
+    override fun setTitle(title: String) {
         toolView.setTitle(title)
     }
 

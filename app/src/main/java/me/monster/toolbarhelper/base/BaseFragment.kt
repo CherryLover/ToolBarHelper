@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import me.monster.toolbarhelper.ToolBarHelper
@@ -13,7 +14,7 @@ import me.monster.toolbarhelper.ToolBarHelper
  * @author: Created jiangjiwei in 2019-09-20 14:29
  */
 abstract class BaseFragment : Fragment() {
-    lateinit var helper: ToolBarHelper
+    var toolHelper: ToolBarHelper? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,16 +27,13 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val closeToolView = closeToolView(view)
         if (closeToolView != null) {
-            helper = ToolBarHelper(view, closeToolView,getTitle())
+            toolHelper = ToolBarHelper(view, closeToolView,getTitle())
         }
         init()
     }
 
-    /**
-     * 设置 ToolBar 的 title
-     */
-    fun setTitle(title: String) {
-        helper.setTitle(title)
+    fun toast(msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
     /**
