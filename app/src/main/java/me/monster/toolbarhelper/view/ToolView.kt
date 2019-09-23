@@ -17,9 +17,11 @@ import me.monster.toolbarhelper.tools.visible
  */
 class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
     var listener: ToolClickListener? = null
+    val vFakeStatus: View
 
     init {
         View.inflate(context, R.layout.tool_view, this)
+        vFakeStatus = findViewById(R.id.v_tool_status_fake)
 
         iv_tool_back.setOnClickListener { navClick() }
         tv_tool_title.setOnClickListener { listener?.onClick(title) }

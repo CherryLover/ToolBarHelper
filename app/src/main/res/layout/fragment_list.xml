@@ -6,10 +6,10 @@
     tools:context=".ListFragment">
 
     <TextView
+        android:background="#FF00DD"
         android:id="@+id/tv_list_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="我是用来假装列表的TextView" />
 

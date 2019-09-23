@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import me.monster.toolbarhelper.tools.StatusBarUtils
 import me.monster.toolbarhelper.tools.ToolClickListener
 import me.monster.toolbarhelper.tools.ToolViewActions
 import me.monster.toolbarhelper.tools.toPix
@@ -23,10 +24,16 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
     }
 
     private fun addToolBar(root: View, closeToolView: View) {
+        val height = StatusBarUtils.getHeight(root.context)
         val layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)
         layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
-        layoutParams.height = 48.toPix()
+        layoutParams.height = 48.toPix() + height
         toolView.layoutParams = layoutParams
+
+        val fakeParams = toolView.vFakeStatus.layoutParams
+        fakeParams.height = height
+        toolView.vFakeStatus.layoutParams = fakeParams
+
         toolView.id = View.generateViewId()
         if (initTitle.isNotEmpty()) {
             toolView.setTitle(initTitle)
