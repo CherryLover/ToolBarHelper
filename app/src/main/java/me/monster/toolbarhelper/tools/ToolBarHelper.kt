@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import me.monster.toolbarhelper.nav.NavProvider
+import me.monster.toolbarhelper.nav.PopProvider
 import me.monster.toolbarhelper.view.ToolView
 
 /**
@@ -56,8 +56,8 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
         }
     }
 
-    fun setNavProvider(navProvider: NavProvider?) {
-        toolView.navProvider = navProvider
+    fun setPopProvider(popProvider: PopProvider?) {
+        toolView.popProvider = popProvider
     }
 
     fun setListener(listener: ToolClickListener) {

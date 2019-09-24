@@ -5,14 +5,16 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_detail.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
+import me.monster.toolbarhelper.nav.NavPop
 
 /**
  * @description
  * @author: Created jiangjiwei in 2019-09-25 00:01
  */
-class DetailFragment: BaseFragment() {
+class DetailFragment : BaseFragment() {
     override fun init() {
         tv_detail_content.setOnClickListener { toast("你点击了内容详情") }
+        toolHelper?.setPopProvider(NavPop)
     }
 
     override fun getTitle(): String {

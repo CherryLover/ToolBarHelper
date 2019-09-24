@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_list.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
+import me.monster.toolbarhelper.nav.NavPop
 import me.monster.toolbarhelper.tools.ToolClickListener
 import me.monster.toolbarhelper.view.ToolView
 
@@ -51,6 +52,8 @@ class ListFragment : BaseFragment(), ToolClickListener {
             toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             toolHelper?.setMenu("详情")
         }, 3 * 1000)
+
+        toolHelper?.setPopProvider(NavPop)
 
         btn_list_entrance.setOnClickListener {
             Navigation.findNavController(it)

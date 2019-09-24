@@ -6,7 +6,7 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.tool_view.view.*
 import me.monster.toolbarhelper.R
-import me.monster.toolbarhelper.nav.NavProvider
+import me.monster.toolbarhelper.nav.PopProvider
 import me.monster.toolbarhelper.tools.ToolClickListener
 import me.monster.toolbarhelper.tools.ToolViewActions
 import me.monster.toolbarhelper.tools.gone
@@ -20,8 +20,8 @@ class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
     var listener: ToolClickListener? = null
     val vFakeStatus: View
     var navInterceptor: Boolean = false
-    var navProvider: NavProvider? = null
-        set(value: NavProvider?){
+    var popProvider: PopProvider? = null
+        set(value){
             navInterceptor = value != null
             field = value
         }
@@ -38,7 +38,7 @@ class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
 
     private fun navClick() {
         if (navInterceptor) {
-            navProvider?.navigation(iv_tool_back)
+            popProvider?.pop(iv_tool_back)
         } else {
             listener?.onClick(navigation)
         }
