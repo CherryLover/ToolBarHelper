@@ -1,14 +1,13 @@
 package me.monster.toolbarhelper
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import me.monster.toolbarhelper.tools.L
 import me.monster.toolbarhelper.tools.StatusBarUtils
 import me.monster.toolbarhelper.tools.ToolClickListener
 import me.monster.toolbarhelper.tools.ToolViewActions
-import me.monster.toolbarhelper.tools.toPix
 import me.monster.toolbarhelper.view.ToolView
 
 /**
@@ -27,7 +26,7 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
         val height = StatusBarUtils.getHeight(root.context)
         val layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)
         layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
-        layoutParams.height = 48.toPix() + height
+        layoutParams.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
         toolView.layoutParams = layoutParams
 
         val fakeParams = toolView.vFakeStatus.layoutParams
@@ -77,7 +76,7 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
     }
 
     private fun checkId(root: ViewGroup) {
-        Log.e("BaseFragment ", "status id rootView Id ${root.id}")
+        L.d("status id rootView Id ${root.id}")
         if (root.id == -1) {
             root.id = View.generateViewId()
         }
