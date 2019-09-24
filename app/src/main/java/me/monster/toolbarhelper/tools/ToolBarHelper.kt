@@ -1,13 +1,10 @@
-package me.monster.toolbarhelper
+package me.monster.toolbarhelper.tools
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import me.monster.toolbarhelper.tools.L
-import me.monster.toolbarhelper.tools.StatusBarUtils
-import me.monster.toolbarhelper.tools.ToolClickListener
-import me.monster.toolbarhelper.tools.ToolViewActions
+import me.monster.toolbarhelper.nav.NavProvider
 import me.monster.toolbarhelper.view.ToolView
 
 /**
@@ -57,6 +54,10 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
             )
             closeRelation.applyTo(root)
         }
+    }
+
+    fun setNavProvider(navProvider: NavProvider?) {
+        toolView.navProvider = navProvider
     }
 
     fun setListener(listener: ToolClickListener) {

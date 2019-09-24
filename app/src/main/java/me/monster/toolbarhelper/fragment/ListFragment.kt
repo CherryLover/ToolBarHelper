@@ -1,10 +1,11 @@
-package me.monster.toolbarhelper
+package me.monster.toolbarhelper.fragment
 
 
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
+import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
 import me.monster.toolbarhelper.tools.ToolClickListener
 import me.monster.toolbarhelper.view.ToolView

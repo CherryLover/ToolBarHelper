@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import me.monster.toolbarhelper.ToolBarHelper
+import me.monster.toolbarhelper.tools.ToolBarHelper
 
 /**
  * @description
@@ -27,7 +27,8 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val closeToolView = closeToolView(view)
         if (closeToolView != null) {
-            toolHelper = ToolBarHelper(view, closeToolView,getTitle())
+            toolHelper =
+                ToolBarHelper(view, closeToolView, getTitle())
         }
         init()
     }
