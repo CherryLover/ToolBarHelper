@@ -5,6 +5,8 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_list.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
 import me.monster.toolbarhelper.tools.ToolClickListener
@@ -49,6 +51,11 @@ class ListFragment : BaseFragment(), ToolClickListener {
             toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             toolHelper?.setMenu("详情")
         }, 3 * 1000)
+
+        btn_list_entrance.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_listFragment_to_detailFragment)
+        }
     }
 
     override fun getLayoutId(): Int {
