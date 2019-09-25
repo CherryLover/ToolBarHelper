@@ -20,15 +20,10 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
     }
 
     private fun addToolBar(root: View, closeToolView: View) {
-        val height = StatusBarUtils.getHeight(root.context)
         val layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)
         layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
         layoutParams.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
         toolView.layoutParams = layoutParams
-
-        val fakeParams = toolView.vFakeStatus.layoutParams
-        fakeParams.height = height
-        toolView.vFakeStatus.layoutParams = fakeParams
 
         toolView.id = View.generateViewId()
         if (initTitle.isNotEmpty()) {

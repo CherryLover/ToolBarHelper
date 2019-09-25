@@ -7,10 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.tool_view.view.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.nav.PopProvider
-import me.monster.toolbarhelper.tools.ToolClickListener
-import me.monster.toolbarhelper.tools.ToolViewActions
-import me.monster.toolbarhelper.tools.gone
-import me.monster.toolbarhelper.tools.visible
+import me.monster.toolbarhelper.tools.*
 
 /**
  * @description
@@ -18,8 +15,8 @@ import me.monster.toolbarhelper.tools.visible
  */
 class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
     var listener: ToolClickListener? = null
-    val vFakeStatus: View
-    var navInterceptor: Boolean = false
+    private val vFakeStatus: View
+    private var navInterceptor: Boolean = false
     var popProvider: PopProvider? = null
         set(value){
             navInterceptor = value != null
@@ -34,6 +31,10 @@ class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
         tv_tool_title.setOnClickListener { listener?.onClick(title) }
         tv_tool_menu.setOnClickListener { listener?.onClick(menu) }
         img_tool_menu.setOnClickListener { listener?.onClick(menuImg) }
+
+        val fakeParams = vFakeStatus.layoutParams
+        fakeParams.height = StatusBarUtils.getHeight(context)
+        vFakeStatus.layoutParams = fakeParams
     }
 
     private fun navClick() {
