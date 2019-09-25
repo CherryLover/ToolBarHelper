@@ -2,6 +2,8 @@ package me.monster.toolbarhelper.view
 
 import android.content.Context
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.tool_view.view.*
@@ -15,7 +17,13 @@ import me.monster.toolbarhelper.tools.*
  */
 class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
     var listener: ToolClickListener? = null
+
     private val vFakeStatus: View
+    private val ivBack: ImageView
+    private val tvTitle: TextView
+    private val tvMenu: TextView
+    private val ivMenuImg: ImageView
+
     private var navInterceptor: Boolean = false
     var popProvider: PopProvider? = null
         set(value){
@@ -26,11 +34,15 @@ class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
     init {
         View.inflate(context, R.layout.tool_view, this)
         vFakeStatus = findViewById(R.id.v_tool_status_fake)
+        ivBack = findViewById(R.id.iv_tool_back)
+        tvTitle = findViewById(R.id.tv_tool_title)
+        tvMenu = findViewById(R.id.tv_tool_menu)
+        ivMenuImg = findViewById(R.id.img_tool_menu)
 
-        iv_tool_back.setOnClickListener { navClick() }
-        tv_tool_title.setOnClickListener { listener?.onClick(title) }
-        tv_tool_menu.setOnClickListener { listener?.onClick(menu) }
-        img_tool_menu.setOnClickListener { listener?.onClick(menuImg) }
+        ivBack.setOnClickListener { navClick() }
+        tvTitle.setOnClickListener { listener?.onClick(title) }
+        tvMenu.setOnClickListener { listener?.onClick(menu) }
+        ivMenuImg.setOnClickListener { listener?.onClick(menuImg) }
 
         val fakeParams = vFakeStatus.layoutParams
         fakeParams.height = StatusBarUtils.getHeight(context)
@@ -39,26 +51,26 @@ class ToolView(context: Context) : ConstraintLayout(context), ToolViewActions {
 
     private fun navClick() {
         if (navInterceptor) {
-            popProvider?.pop(iv_tool_back)
+            popProvider?.pop(ivBack)
         } else {
             listener?.onClick(navigation)
         }
     }
 
     override fun setTitle(title: String) {
-        tv_tool_title.text = title
+        tvTitle.text = title
     }
 
     override fun setMenu(menu: String) {
-        tv_tool_menu.visible()
-        img_tool_menu.gone()
-        tv_tool_menu.text = menu
+        tvMenu.visible()
+        ivMenuImg.gone()
+        tvMenu.text = menu
     }
 
     override fun setMenuImg(@DrawableRes id: Int) {
-        img_tool_menu.visible()
-        tv_tool_menu.gone()
-        img_tool_menu.setImageResource(id)
+        ivMenuImg.visible()
+        tvMenu.gone()
+        ivMenuImg.setImageResource(id)
     }
 
     companion object {
