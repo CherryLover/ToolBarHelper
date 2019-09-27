@@ -57,7 +57,7 @@ class ListFragment : BaseFragment(), ToolClickListener {
 
         btn_list_entrance.setOnClickListener {
             Navigation.findNavController(it)
-                .navigate(R.id.action_listFragment_to_detailFragment)
+                .navigate(R.id.action_listFragment_to_singleViewFragment)
         }
     }
 

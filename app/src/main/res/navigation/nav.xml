@@ -13,9 +13,16 @@
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_singleViewFragment"
+            app:destination="@id/singleViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="me.monster.toolbarhelper.fragment.DetailFragment"
         android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/singleViewFragment"
+        android:name="me.monster.toolbarhelper.fragment.SingleViewFragment"
+        android:label="SingleViewFragment" />
 </navigation>
