@@ -5,7 +5,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_detail.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
-import me.monster.toolbarhelper.nav.NavPop
+import me.monster.toolbarhelper.toolview.nav.NavPop
 
 /**
  * @description

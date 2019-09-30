@@ -9,9 +9,10 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_list.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
-import me.monster.toolbarhelper.nav.NavPop
-import me.monster.toolbarhelper.tools.ToolClickListener
-import me.monster.toolbarhelper.view.ToolView
+
+import me.monster.toolbarhelper.toolview.ToolView
+import me.monster.toolbarhelper.toolview.nav.NavPop
+import me.monster.toolbarhelper.toolview.tools.ToolClickListener
 
 /**
  * A simple [Fragment] subclass.

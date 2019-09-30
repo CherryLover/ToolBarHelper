@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import me.monster.toolbarhelper.tools.ToolBarHelper
+import me.monster.toolbarhelper.toolview.tools.ToolBarHelper
 
 /**
  * @description
