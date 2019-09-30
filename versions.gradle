@@ -1,0 +1,58 @@
+ext.deps = [:]
+def versions = [:]
+
+// for build
+def build_versions = [:]
+build_versions.compile_sdk = 29
+build_versions.min_sdk = 21
+build_versions.target_sdk = 29
+build_versions.build_tool = "29.0.2"
+
+build_versions.app_version_code = 1
+build_versions.app_version_name = "1.0"
+
+build_versions.tool_version_code = 4
+build_versions.tool_version_name = "0.0.4"
+
+ext.build_versions = build_versions
+
+// necessary
+versions.kotlin = "1.3.41"
+versions.appcompat = "1.1.0"
+versions.core_ktx = "1.1.0"
+versions.constraintLayout = "1.1.3"
+versions.nav = "2.1.0"
+versions.legacy_support_v4 = "1.0.0"
+
+// test
+versions.junit = "4.12"
+versions.test_runner = "1.2.0"
+versions.espresso_core = "3.2.0"
+
+//Project build.gradle
+versions.build_gradle = "3.5.0"
+
+
+
+def deps = [:]
+
+//Project build.gradle
+deps.build_gradle = "com.android.tools.build:gradle:$versions.build_gradle"
+deps.kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+
+deps.kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+deps.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+deps.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+deps.constraintLayout = "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
+deps.legacy_support_v4 = "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4"
+
+deps.junit = "junit:junit:$versions.junit"
+deps.test_runner = "com.android.support.test:runner:$versions.test_runner"
+deps.espresso_core = "com.android.support.test.espresso:espresso-core:$versions.espresso_core"
+
+def navigation = [:]
+navigation.navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.nav"
+navigation.navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.nav"
+deps.navigation = navigation
+
+ext.deps = deps
