@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolView">
+        <attr name="toolTitle" format="string" />
+        <attr name="menuText" format="string" />
+        <attr name="menuImg" format="reference" />
+        <attr name="navIcon" format="reference" />
+        <attr name="navShow" format="enum">
+            <enum name="gone" value="0" />
+            <enum name="visible" value="1" />
+            <enum name="invisible" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

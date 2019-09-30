@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ToolView</string>
+    <string name="nav_content_desc">ToolView Navigation Button View</string>
+    <string name="menu_img_content_desc">ToolView Image Menu Button View</string>
 </resources>
