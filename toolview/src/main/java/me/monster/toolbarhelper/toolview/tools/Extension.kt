@@ -3,6 +3,8 @@ package me.monster.toolbarhelper.toolview.tools
 import android.content.res.Resources
 import android.util.TypedValue
 import android.view.View
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 
 /**
  * @description
@@ -26,4 +28,8 @@ fun View.gone() {
 
 fun View.inVisible() {
     this.visibility = View.INVISIBLE
+}
+
+fun View.getColorMe(@ColorRes id: Int): Int {
+    return ContextCompat.getColor(this.context, id)
 }

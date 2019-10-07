@@ -42,7 +42,8 @@ class ListFragment : BaseFragment(), ToolClickListener {
 
     private fun menuClick() {
         // TODO: 2019-09-24 点击跳转到没有动态设置 ToolView 的页面
-        toast("菜单按钮")
+        toolHelper?.setBackgroundRes(R.drawable.bg_color_gradient)
+        toast("设置背景色")
     }
 
     override fun init() {
@@ -52,6 +53,7 @@ class ListFragment : BaseFragment(), ToolClickListener {
             toolHelper?.setTitle("测试列表")
             toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             toolHelper?.setMenu("详情")
+            toolHelper?.setBgColor(android.R.color.holo_blue_light)
         }, 3 * 1000)
 
         toolHelper?.setPopProvider(NavPop)

@@ -1,6 +1,7 @@
 package me.monster.toolbarhelper.toolview
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -24,6 +25,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     private val tvTitle: TextView
     private val tvMenu: TextView
     private val ivMenuImg: ImageView
+    private val clRoot: ConstraintLayout
 
     private var navInterceptor: Boolean = false
 
@@ -38,6 +40,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
     init {
         View.inflate(context, R.layout.tool_view, this)
+        clRoot = findViewById(R.id.cl_tool_root)
         vFakeStatus = findViewById(R.id.v_tool_status_fake)
         ivBack = findViewById(R.id.iv_tool_back)
         tvTitle = findViewById(R.id.tv_tool_title)
@@ -108,6 +111,22 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         ivMenuImg.visible()
         tvMenu.gone()
         ivMenuImg.setImageResource(id)
+    }
+
+    fun setBgColor(id: Int) {
+        clRoot.setBackgroundColor(getColorMe(id))
+    }
+
+    override fun setBackground(background: Drawable?) {
+        clRoot.background = background
+    }
+
+    override fun setBackgroundColor(color: Int) {
+        clRoot.setBackgroundColor(color)
+    }
+
+    override fun setBackgroundResource(resid: Int) {
+        clRoot.setBackgroundResource(resid)
     }
 
     companion object {

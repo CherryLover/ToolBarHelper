@@ -1,7 +1,11 @@
 package me.monster.toolbarhelper.toolview.tools
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import me.monster.toolbarhelper.toolview.nav.PopProvider
@@ -70,6 +74,22 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
 
     override fun setTitle(title: String) {
         toolView.setTitle(title)
+    }
+
+    fun setBgColor(@ColorRes id: Int) {
+        toolView.setBgColor(id)
+    }
+
+    fun setBackgroundColor(@ColorInt color: Int) {
+        toolView.setBackgroundColor(color)
+    }
+
+    fun setBackgroundRes(@DrawableRes id: Int) {
+        toolView.setBackgroundResource(id)
+    }
+
+    fun setBackground(backgroundDrawable: Drawable) {
+        toolView.background = backgroundDrawable
     }
 
     private fun checkId(root: ViewGroup) {
