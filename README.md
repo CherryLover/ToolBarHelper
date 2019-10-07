@@ -6,11 +6,10 @@ ToolBarHelper 是一个用于动态设置 Android ToolBar 的第三方库，使�
 
 本项目处于刚起步阶段，难免存在一些问题，还请在 [issues 页面](https://github.com/CherryLover/ToolBarHelper/issues)阐述。
 
-##### 当前版本
+**当前版本**
 
-```
 [![](https://jitpack.io/v/CherryLover/ToolBarHelper.svg)](https://jitpack.io/#CherryLover/ToolBarHelper)
-```
+
 
 ## 如何使用
 
