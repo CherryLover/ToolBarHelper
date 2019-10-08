@@ -1,4 +1,4 @@
-package me.monster.toolbarhelper
+package me.monster.toolbarhelper.activity
 
 import android.animation.Animator
 import android.animation.AnimatorSet
@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import kotlinx.android.synthetic.main.activity_splash.*
+import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseActivity
 
 
@@ -24,7 +25,7 @@ class SplashActivity : BaseActivity() {
     private fun delayEntrance() {
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            MainActivity.start(this)
+            EntranceActivity.start(this)
             this.finish()
         }, 800)
     }
