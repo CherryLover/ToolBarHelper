@@ -36,4 +36,5 @@ dependencies {
     implementation deps.navigation.navigation_fragment_ktx
     implementation deps.navigation.navigation_ui_ktx
     implementation project(path: ':toolview')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
