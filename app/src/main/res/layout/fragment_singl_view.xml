@@ -12,6 +12,7 @@
         app:menuImg="@drawable/ic_arrow_back_black_24dp"
         app:menuText="点我"
         app:navIcon="@drawable/ic_send_black_24dp"
+        app:navShow="gone"
         app:toolTitle="单独使用页面" />
 
     <TextView

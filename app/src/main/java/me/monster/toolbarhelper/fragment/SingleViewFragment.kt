@@ -1,14 +1,30 @@
 package me.monster.toolbarhelper.fragment
 
+import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.fragment_singl_view.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
+import me.monster.toolbarhelper.toolview.ToolView
+import me.monster.toolbarhelper.toolview.tools.ToolClickListener
 
 /**
  * @description
  * @author: Created jiangjiwei in 2019-09-27 17:03
  */
-class SingleViewFragment : BaseFragment() {
+class SingleViewFragment : BaseFragment(), ToolClickListener {
+    override fun onClick(what: Int) {
+        if (what == ToolView.menuImg) {
+            tool_single_tool.navIconVisible = View.VISIBLE
+            tool_single_tool.menuImgVisible = View.GONE
+            tool_single_tool.menuTextVisible = View.VISIBLE
+        } else if (what == ToolView.menu) {
+            tool_single_tool.navIcon = R.drawable.ic_arrow_back_black_24dp
+            tool_single_tool.menuTextVisible = View.GONE
+        }
+
+    }
+
     override fun init() {
     }
 
@@ -22,5 +38,10 @@ class SingleViewFragment : BaseFragment() {
 
     override fun closeToolView(rootView: View): View? {
         return null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        tool_single_tool.listener = this
     }
 }

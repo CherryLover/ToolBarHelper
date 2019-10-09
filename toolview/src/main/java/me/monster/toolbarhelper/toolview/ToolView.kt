@@ -32,6 +32,31 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     var initTitle = ""
     var initMenu = ""
 
+    var menuImgVisible: Int = 0
+        set(value) {
+            ivMenuImg.visibility = value
+            field = value
+        }
+    var menuTextVisible: Int = 0
+        set(value) {
+            tvMenu.visibility = value
+            field = value
+        }
+    var navIconVisible: Int = 0
+        set(value) {
+            ivBack.visibility = value
+            field = value
+        }
+
+    var navIcon: Int = notFound
+        set(value) {
+            if (value == notFound) {
+                return
+            }
+            ivBack.setImageResource(value)
+            field = value
+        }
+
     var popProvider: PopProvider? = null
         set(value) {
             navInterceptor = value != null
@@ -47,14 +72,15 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         tvMenu = findViewById(R.id.tv_tool_menu)
         ivMenuImg = findViewById(R.id.img_tool_menu)
 
+        menuImgVisible = ivMenuImg.visibility
+        menuTextVisible = ivMenuImg.visibility
+        navIconVisible  = ivBack.visibility
+
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ToolView)
         val xmlVisible = typedArray.getInt(R.styleable.ToolView_navShow, 1)
         initTitle = typedArray.getString(R.styleable.ToolView_toolTitle) ?: ""
         initMenu = typedArray.getString(R.styleable.ToolView_menuText) ?: ""
-        val navIcon = typedArray.getResourceId(
-            R.styleable.ToolView_navIcon,
-            R.drawable.ic_arrow_back_black_24dp
-        )
+        navIcon = typedArray.getResourceId(R.styleable.ToolView_navIcon, notFound)
         val menuIcon = typedArray.getResourceId(R.styleable.ToolView_menuImg, notFound)
         typedArray.recycle()
         configView(xmlVisible, navIcon, menuIcon)
@@ -69,16 +95,16 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     }
 
     private fun configView(navVisibility: Int, navIcon: Int, menuIcon: Int) {
-        ivBack.visibility = when (navVisibility) {
-            1 -> nav_visible
-            2 -> nav_invisible
-            else -> nav_gone
-        }
         if (navIcon == notFound) {
             ivBack.gone()
         } else {
             ivBack.visible()
             ivBack.setImageResource(navIcon)
+        }
+        ivBack.visibility = when (navVisibility) {
+            1 -> nav_visible
+            2 -> nav_invisible
+            else -> nav_gone
         }
         tvTitle.text = initTitle
         setMenu(initMenu)
