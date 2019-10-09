@@ -1,11 +1,14 @@
 package me.monster.toolbarhelper.toolview
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import me.monster.toolbarhelper.toolview.nav.PopProvider
@@ -63,6 +66,35 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
             field = value
         }
 
+    var titleTextSize: Float = defaultTitleTextSize
+        set(value) {
+            if (value <= 0) {
+                return
+            }
+            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
+            field = value
+        }
+    var titleTextColor : Int = Color.WHITE
+        set(@ColorInt value) {
+            tvTitle.setTextColor(value)
+            field = value
+        }
+
+    var menuTextSize: Float = defaultMenuTextSize
+        set(value) {
+            if (value <= 0) {
+                return
+            }
+            tvMenu.setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
+            field = value
+        }
+
+    var menuTextColor: Int = Color.BLUE
+        set(@ColorInt value) {
+            tvMenu.setTextColor(value)
+            field = value
+        }
+
     init {
         View.inflate(context, R.layout.tool_view, this)
         clRoot = findViewById(R.id.cl_tool_root)
@@ -79,11 +111,17 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ToolView)
         val xmlVisible = typedArray.getInt(R.styleable.ToolView_navShow, 1)
         initTitle = typedArray.getString(R.styleable.ToolView_toolTitle) ?: ""
+        titleTextSize = typedArray.getDimension(R.styleable.ToolView_titleTextSize, defaultTitleTextSize)
+        titleTextColor = typedArray.getColor(R.styleable.ToolView_titleTextColor, Color.WHITE)
         initMenu = typedArray.getString(R.styleable.ToolView_menuText) ?: ""
+        menuTextSize = typedArray.getDimension(R.styleable.ToolView_menuTextSize, defaultMenuTextSize)
+        menuTextColor = typedArray.getColor(R.styleable.ToolView_menuTextColor, Color.BLACK)
         navIcon = typedArray.getResourceId(R.styleable.ToolView_navIcon, notFound)
         val menuIcon = typedArray.getResourceId(R.styleable.ToolView_menuImg, notFound)
         typedArray.recycle()
+
         configView(xmlVisible, navIcon, menuIcon)
+
         ivBack.setOnClickListener { navClick() }
         tvTitle.setOnClickListener { listener?.onClick(title) }
         tvMenu.setOnClickListener { listener?.onClick(menu) }
@@ -157,6 +195,8 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
     companion object {
         const val notFound = -1
+        val defaultTitleTextSize = 20.sp()
+        val defaultMenuTextSize = 15.sp()
 
         const val navigation = 1
         const val title = 2

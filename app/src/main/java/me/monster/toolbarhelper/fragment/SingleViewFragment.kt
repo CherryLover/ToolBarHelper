@@ -1,5 +1,6 @@
 package me.monster.toolbarhelper.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_singl_view.*
@@ -7,6 +8,7 @@ import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
 import me.monster.toolbarhelper.toolview.ToolView
 import me.monster.toolbarhelper.toolview.tools.ToolClickListener
+import me.monster.toolbarhelper.toolview.tools.sp
 
 /**
  * @description
@@ -43,5 +45,30 @@ class SingleViewFragment : BaseFragment(), ToolClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tool_single_tool.listener = this
+
+        btn_single_setMenuColor.setOnClickListener {
+            tool_single_tool.menuTextColor = Color.RED
+        }
+
+        btn_single_setMenuSize.setOnClickListener {
+            tool_single_tool.menuTextSize = 22.sp()
+        }
+
+        btn_single_setTitleColor.setOnClickListener {
+            tool_single_tool.titleTextColor = Color.RED
+        }
+
+        btn_single_setTitleSize.setOnClickListener {
+            tool_single_tool.titleTextSize = 16.sp()
+        }
+
+        btn_single_reset.setOnClickListener {
+            tool_single_tool.titleTextSize = ToolView.defaultTitleTextSize
+            tool_single_tool.menuTextSize = ToolView.defaultMenuTextSize
+            tool_single_tool.titleTextColor = Color.WHITE
+            tool_single_tool.menuTextColor = Color.BLACK
+        }
+
+
     }
 }
