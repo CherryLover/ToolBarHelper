@@ -1,11 +1,14 @@
 package me.monster.toolbarhelper.toolview
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import me.monster.toolbarhelper.toolview.nav.PopProvider
@@ -32,9 +35,63 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     var initTitle = ""
     var initMenu = ""
 
+    var menuImgVisible: Int = 0
+        set(value) {
+            ivMenuImg.visibility = value
+            field = value
+        }
+    var menuTextVisible: Int = 0
+        set(value) {
+            tvMenu.visibility = value
+            field = value
+        }
+    var navIconVisible: Int = 0
+        set(value) {
+            ivBack.visibility = value
+            field = value
+        }
+
+    var navIcon: Int = notFound
+        set(value) {
+            if (value == notFound) {
+                return
+            }
+            ivBack.setImageResource(value)
+            field = value
+        }
+
     var popProvider: PopProvider? = null
         set(value) {
             navInterceptor = value != null
+            field = value
+        }
+
+    var titleTextSize: Float = defaultTitleTextSize
+        set(value) {
+            if (value <= 0) {
+                return
+            }
+            tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
+            field = value
+        }
+    var titleTextColor : Int = Color.WHITE
+        set(@ColorInt value) {
+            tvTitle.setTextColor(value)
+            field = value
+        }
+
+    var menuTextSize: Float = defaultMenuTextSize
+        set(value) {
+            if (value <= 0) {
+                return
+            }
+            tvMenu.setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
+            field = value
+        }
+
+    var menuTextColor: Int = Color.BLUE
+        set(@ColorInt value) {
+            tvMenu.setTextColor(value)
             field = value
         }
 
@@ -47,17 +104,24 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         tvMenu = findViewById(R.id.tv_tool_menu)
         ivMenuImg = findViewById(R.id.img_tool_menu)
 
+        menuImgVisible = ivMenuImg.visibility
+        menuTextVisible = ivMenuImg.visibility
+        navIconVisible  = ivBack.visibility
+
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ToolView)
         val xmlVisible = typedArray.getInt(R.styleable.ToolView_navShow, 1)
         initTitle = typedArray.getString(R.styleable.ToolView_toolTitle) ?: ""
+        titleTextSize = typedArray.getDimension(R.styleable.ToolView_titleTextSize, defaultTitleTextSize)
+        titleTextColor = typedArray.getColor(R.styleable.ToolView_titleTextColor, Color.WHITE)
         initMenu = typedArray.getString(R.styleable.ToolView_menuText) ?: ""
-        val navIcon = typedArray.getResourceId(
-            R.styleable.ToolView_navIcon,
-            R.drawable.ic_arrow_back_black_24dp
-        )
+        menuTextSize = typedArray.getDimension(R.styleable.ToolView_menuTextSize, defaultMenuTextSize)
+        menuTextColor = typedArray.getColor(R.styleable.ToolView_menuTextColor, Color.BLACK)
+        navIcon = typedArray.getResourceId(R.styleable.ToolView_navIcon, notFound)
         val menuIcon = typedArray.getResourceId(R.styleable.ToolView_menuImg, notFound)
         typedArray.recycle()
+
         configView(xmlVisible, navIcon, menuIcon)
+
         ivBack.setOnClickListener { navClick() }
         tvTitle.setOnClickListener { listener?.onClick(title) }
         tvMenu.setOnClickListener { listener?.onClick(menu) }
@@ -69,16 +133,16 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     }
 
     private fun configView(navVisibility: Int, navIcon: Int, menuIcon: Int) {
-        ivBack.visibility = when (navVisibility) {
-            1 -> nav_visible
-            2 -> nav_invisible
-            else -> nav_gone
-        }
         if (navIcon == notFound) {
             ivBack.gone()
         } else {
             ivBack.visible()
             ivBack.setImageResource(navIcon)
+        }
+        ivBack.visibility = when (navVisibility) {
+            1 -> nav_visible
+            2 -> nav_invisible
+            else -> nav_gone
         }
         tvTitle.text = initTitle
         setMenu(initMenu)
@@ -131,6 +195,8 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
     companion object {
         const val notFound = -1
+        val defaultTitleTextSize = 20.sp()
+        val defaultMenuTextSize = 15.sp()
 
         const val navigation = 1
         const val title = 2
