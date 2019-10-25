@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_list.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
-import me.monster.toolbarhelper.toolview.ToolView
+import me.monster.toolbarhelper.toolview.BaseToolView
 import me.monster.toolbarhelper.toolview.nav.NavPop
 import me.monster.toolbarhelper.toolview.tools.ToolClickListener
 
@@ -17,9 +17,9 @@ import me.monster.toolbarhelper.toolview.tools.ToolClickListener
 class ListFragment : BaseFragment(), ToolClickListener {
     override fun onClick(what: Int) {
         when (what) {
-            ToolView.navigation -> navClick()
-            ToolView.title -> titleClick()
-            ToolView.menu -> menuClick()
+            BaseToolView.navigation -> navClick()
+            BaseToolView.title -> titleClick()
+            BaseToolView.menu -> menuClick()
             else -> menuImgClick()
         }
     }
