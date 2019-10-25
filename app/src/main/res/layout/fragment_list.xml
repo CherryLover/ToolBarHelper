@@ -19,10 +19,22 @@
         android:id="@+id/btn_list_entrance"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:text="进入详情"
+        android:text="单独使用 ToolView"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_list_custom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lv_list_menu" />
+
+    <Button
+        android:id="@+id/btn_list_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="自定义 ToolBar"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_list_entrance"
         app:layout_constraintTop_toBottomOf="@id/lv_list_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

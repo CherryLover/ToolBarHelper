@@ -2,6 +2,7 @@ package me.monster.toolbarhelper.fragment
 
 
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -44,8 +45,11 @@ class ListFragment : BaseFragment(), ToolClickListener {
         toolHelper?.setListener(this)
 
         btn_list_entrance.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_listFragment_to_singleViewFragment)
+            showMessage(getString(R.string.single_tool_message), R.id.action_listFragment_to_singleViewFragment)
+        }
+
+        btn_list_custom.setOnClickListener {
+            showMessage(getString(R.string.custom_tool_message), 0)
         }
 
         val menuList = mutableListOf<Map<String, String>>()
@@ -84,6 +88,17 @@ class ListFragment : BaseFragment(), ToolClickListener {
         menuList.add(map2)
         menuList.add(map3)
         menuList.add(map4)
+    }
+
+    private fun showMessage(message: String, destId: Int) {
+        AlertDialog.Builder(context!!)
+            .setTitle("提示")
+            .setMessage(message)
+            .setPositiveButton("确定") { _, _ ->
+
+            }
+            .create()
+            .show()
     }
 
     override fun getLayoutId(): Int {

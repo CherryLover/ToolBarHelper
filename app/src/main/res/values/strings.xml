@@ -5,4 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash_image">Splash Image</string>
     <string name="hint_entrance_info">NavigationActivity 是用 Navigation 作为内容导航的 Activity。</string>
+    <string name="custom_tool_message">即将打开的页面的 ToolBar 是一个继承自 BaseToolView 实现的 ToolView，开发者如有需要完全自定义 ToolBar 时，可依据继承自 BaseToolView，实现自己逻辑即可</string>
+    <string name="single_tool_message">将要显示的页面的 ToolView 是通过在 layout 文件中声明出 ToolView 实现的。</string>
 </resources>
