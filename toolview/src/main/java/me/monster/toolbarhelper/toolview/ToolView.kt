@@ -19,9 +19,9 @@ import me.monster.toolbarhelper.toolview.tools.*
  * @author: Created jiangjiwei in 2019-09-19 16:51
  */
 class ToolView(context: Context, attributeSet: AttributeSet? = null) :
-    ConstraintLayout(context, attributeSet),
+    BaseToolView(context, attributeSet),
     ToolViewActions {
-    var listener: ToolClickListener? = null
+//    var listener: ToolClickListener? = null
 
     private val vFakeStatus: View
     private val ivBack: ImageView
@@ -30,7 +30,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     private val ivMenuImg: ImageView
     private val clRoot: ConstraintLayout
 
-    private var navInterceptor: Boolean = false
+//    private var navInterceptor: Boolean = false
 
     var initTitle = ""
     var initMenu = ""
@@ -60,11 +60,11 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
             field = value
         }
 
-    var popProvider: PopProvider? = null
-        set(value) {
-            navInterceptor = value != null
-            field = value
-        }
+//    var popProvider: PopProvider? = null
+//        set(value) {
+//            navInterceptor = value != null
+//            field = value
+//        }
 
     var titleTextSize: Float = defaultTitleTextSize
         set(value) {
@@ -122,7 +122,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
         configView(xmlVisible, navIcon, menuIcon)
 
-        ivBack.setOnClickListener { navClick() }
+        ivBack.setOnClickListener { navClick(ivBack) }
         tvTitle.setOnClickListener { listener?.onClick(title) }
         tvMenu.setOnClickListener { listener?.onClick(menu) }
         ivMenuImg.setOnClickListener { listener?.onClick(menuImg) }
@@ -149,13 +149,13 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         setMenuImg(menuIcon)
     }
 
-    private fun navClick() {
-        if (navInterceptor) {
-            popProvider?.pop(ivBack)
-        } else {
-            listener?.onClick(navigation)
-        }
-    }
+//    private fun navClick() {
+//        if (navInterceptor) {
+//            popProvider?.pop(ivBack)
+//        } else {
+//            listener?.onClick(navigation)
+//        }
+//    }
 
     override fun setTitle(title: String) {
         tvTitle.text = title
@@ -177,7 +177,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         ivMenuImg.setImageResource(id)
     }
 
-    fun setBgColor(id: Int) {
+    override fun setBgColor(id: Int) {
         clRoot.setBackgroundColor(getColorMe(id))
     }
 
@@ -193,18 +193,18 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         clRoot.setBackgroundResource(resid)
     }
 
-    companion object {
-        const val notFound = -1
-        val defaultTitleTextSize = 20.sp()
-        val defaultMenuTextSize = 15.sp()
-
-        const val navigation = 1
-        const val title = 2
-        const val menu = 3
-        const val menuImg = 4
-
-        const val nav_gone = View.GONE
-        const val nav_visible = View.VISIBLE
-        const val nav_invisible = View.INVISIBLE
-    }
+//    companion object {
+//        const val notFound = -1
+//        val defaultTitleTextSize = 20.sp()
+//        val defaultMenuTextSize = 15.sp()
+//
+//        const val navigation = 1
+//        const val title = 2
+//        const val menu = 3
+//        const val menuImg = 4
+//
+//        const val nav_gone = View.GONE
+//        const val nav_visible = View.VISIBLE
+//        const val nav_invisible = View.INVISIBLE
+//    }
 }

@@ -8,17 +8,26 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import me.monster.toolbarhelper.toolview.nav.PopProvider
+import me.monster.toolbarhelper.toolview.BaseToolView
 import me.monster.toolbarhelper.toolview.ToolView
+import me.monster.toolbarhelper.toolview.nav.PopProvider
 
 /**
  * @description
  * @author: Created jiangjiwei in 2019-09-20 14:53
  */
-class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: String = "") :
-    ToolViewActions {
+class ToolBarHelper(
+    rootView: View,
+    closeToolView: View,
+    private var toolView: BaseToolView = ToolView(rootView.context),
+    private var initTitle: String = ""
+) : ToolViewActions {
 
-    private val toolView = ToolView(rootView.context)
+    constructor(
+        rootView: View,
+        closeToolView: View,
+        initTitle: String = ""
+    ) : this(rootView, closeToolView, ToolView(rootView.context), initTitle)
 
     init {
         addToolBar(rootView, closeToolView)
@@ -76,7 +85,7 @@ class ToolBarHelper(rootView: View, closeToolView: View, private var initTitle: 
         toolView.setTitle(title)
     }
 
-    fun setBgColor(@ColorRes id: Int) {
+    override fun setBgColor(@ColorRes id: Int) {
         toolView.setBgColor(id)
     }
 

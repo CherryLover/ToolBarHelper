@@ -1,5 +1,6 @@
 package me.monster.toolbarhelper.toolview.tools
 
+import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 
 /**
@@ -12,5 +13,7 @@ interface ToolViewActions {
     fun setMenu(menu: String)
 
     fun setMenuImg(@DrawableRes id: Int)
+
+    fun setBgColor(@ColorRes id: Int)
 
 }
