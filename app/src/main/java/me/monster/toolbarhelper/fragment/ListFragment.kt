@@ -26,19 +26,19 @@ class ListFragment : BaseFragment(), ToolClickListener {
     }
 
     private fun navClick() {
-        toast("返回按钮的点击")
+        toast(getString(R.string.message_list_nav))
     }
 
     private fun titleClick() {
-        toast("标题的点击")
+        toast(getString(R.string.message_list_title))
     }
 
     private fun menuImgClick() {
-        toast("菜单图标按钮的点击")
+        toast(getString(R.string.message_list_menu_img))
     }
 
     private fun menuClick() {
-        toast("菜单按钮的点击")
+        toast(getString(R.string.message_list_menu))
     }
 
     override fun init() {
@@ -69,8 +69,8 @@ class ListFragment : BaseFragment(), ToolClickListener {
 
     private fun handleItemClick(position: Int) {
         when (position) {
-            0 -> toolHelper?.setTitle("点击更换标题")
-            1 -> toolHelper?.setMenu("详情")
+            0 -> toolHelper?.setTitle(getString(R.string.title_list_after_click))
+            1 -> toolHelper?.setMenu(getString(R.string.menu_list_after_click))
             2 -> toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             3 -> toolHelper?.setBackgroundRes(R.drawable.bg_color_gradient)
             4 -> toolHelper?.setPopProvider(NavPop)
@@ -78,11 +78,11 @@ class ListFragment : BaseFragment(), ToolClickListener {
     }
 
     private fun prepareListItem(menuList: MutableList<Map<String, String>>) {
-        val map = hashMapOf("text" to "更换标题")
-        val map1 = hashMapOf("text" to "更换右侧菜单")
-        val map2 = hashMapOf("text" to "显示菜单图片")
-        val map3 = hashMapOf("text" to "设置 ToolBar 背景（渐变色）")
-        val map4 = hashMapOf("text" to "托管 ToolBar 返回按钮点击")
+        val map = hashMapOf("text" to getString(R.string.item_list_change_title))
+        val map1 = hashMapOf("text" to getString(R.string.item_list_change_menu))
+        val map2 = hashMapOf("text" to getString(R.string.item_list_change_menu_img))
+        val map3 = hashMapOf("text" to getString(R.string.item_list_change_background))
+        val map4 = hashMapOf("text" to getString(R.string.item_list_change_nav_click))
         menuList.add(map)
         menuList.add(map1)
         menuList.add(map2)
@@ -92,9 +92,9 @@ class ListFragment : BaseFragment(), ToolClickListener {
 
     private fun showMessage(message: String, destId: Int) {
         AlertDialog.Builder(context!!)
-            .setTitle("提示")
+            .setTitle(getString(R.string.title_app_tip))
             .setMessage(message)
-            .setPositiveButton("确定") { _, _ ->
+            .setPositiveButton(getString(R.string.text_dialog_positive)) { _, _ ->
 
             }
             .create()
@@ -110,6 +110,6 @@ class ListFragment : BaseFragment(), ToolClickListener {
     }
 
     override fun getTitle(): String {
-        return "默认标题"
+        return getString(R.string.title_list_default)
     }
 }

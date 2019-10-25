@@ -13,12 +13,12 @@ import me.monster.toolbarhelper.toolview.nav.NavPop
  */
 class DetailFragment : BaseFragment() {
     override fun init() {
-        tv_detail_content.setOnClickListener { toast("你点击了内容详情") }
+        tv_detail_content.setOnClickListener { toast(getString(R.string.message_detail_content)) }
         toolHelper?.setPopProvider(NavPop)
     }
 
     override fun getTitle(): String {
-        return "内容详情"
+        return getString(R.string.title_detail_frag)
     }
 
     override fun getLayoutId(): Int {
