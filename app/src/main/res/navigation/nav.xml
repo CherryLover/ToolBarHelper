@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_listFragment_to_singleViewFragment"
             app:destination="@id/singleViewFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_customToolViewFragment"
+            app:destination="@id/customToolViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -25,4 +28,8 @@
         android:id="@+id/singleViewFragment"
         android:name="me.monster.toolbarhelper.fragment.SingleViewFragment"
         android:label="SingleViewFragment" />
+    <fragment
+        android:id="@+id/customToolViewFragment"
+        android:name="me.monster.toolbarhelper.fragment.CustomToolViewFragment"
+        android:label="CustomToolViewFragment" />
 </navigation>

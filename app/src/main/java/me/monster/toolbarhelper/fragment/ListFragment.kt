@@ -49,7 +49,7 @@ class ListFragment : BaseFragment(), ToolClickListener {
         }
 
         btn_list_custom.setOnClickListener {
-            showMessage(getString(R.string.custom_tool_message), 0)
+            showMessage(getString(R.string.custom_tool_message), R.id.action_listFragment_to_customToolViewFragment)
         }
 
         val menuList = mutableListOf<Map<String, String>>()
@@ -94,9 +94,7 @@ class ListFragment : BaseFragment(), ToolClickListener {
         AlertDialog.Builder(context!!)
             .setTitle(getString(R.string.title_app_tip))
             .setMessage(message)
-            .setPositiveButton(getString(R.string.text_dialog_positive)) { _, _ ->
-
-            }
+            .setPositiveButton(getString(R.string.text_dialog_positive)) { _, _ -> Navigation.findNavController(view!!).navigate(destId) }
             .create()
             .show()
     }
