@@ -6,7 +6,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.fragment_singl_view.*
 import me.monster.toolbarhelper.R
 import me.monster.toolbarhelper.base.BaseFragment
-import me.monster.toolbarhelper.toolview.BaseToolView
+import me.monster.toolbarhelper.toolview.ToolView
 import me.monster.toolbarhelper.toolview.tools.ToolClickListener
 import me.monster.toolbarhelper.toolview.tools.sp
 
@@ -16,11 +16,11 @@ import me.monster.toolbarhelper.toolview.tools.sp
  */
 class SingleViewFragment : BaseFragment(), ToolClickListener {
     override fun onClick(what: Int) {
-        if (what == BaseToolView.menuImg) {
+        if (what == ToolView.menuImg) {
             tool_single_tool.navIconVisible = View.VISIBLE
             tool_single_tool.menuImgVisible = View.GONE
             tool_single_tool.menuTextVisible = View.VISIBLE
-        } else if (what == BaseToolView.menu) {
+        } else if (what == ToolView.menu) {
             tool_single_tool.navIcon = R.drawable.ic_arrow_back_black_24dp
             tool_single_tool.menuTextVisible = View.GONE
         }
@@ -63,8 +63,8 @@ class SingleViewFragment : BaseFragment(), ToolClickListener {
         }
 
         btn_single_reset.setOnClickListener {
-            tool_single_tool.titleTextSize = BaseToolView.defaultTitleTextSize
-            tool_single_tool.menuTextSize = BaseToolView.defaultMenuTextSize
+            tool_single_tool.titleTextSize = ToolView.defaultTitleTextSize
+            tool_single_tool.menuTextSize = ToolView.defaultMenuTextSize
             tool_single_tool.titleTextColor = Color.WHITE
             tool_single_tool.menuTextColor = Color.BLACK
         }

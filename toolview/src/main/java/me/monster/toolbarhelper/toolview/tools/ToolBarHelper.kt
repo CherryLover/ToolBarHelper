@@ -8,7 +8,6 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import me.monster.toolbarhelper.toolview.BaseToolView
 import me.monster.toolbarhelper.toolview.ToolView
 import me.monster.toolbarhelper.toolview.nav.PopProvider
 
@@ -19,7 +18,7 @@ import me.monster.toolbarhelper.toolview.nav.PopProvider
 class ToolBarHelper(
     rootView: View,
     closeToolView: View,
-    private var toolView: BaseToolView = ToolView(rootView.context),
+    private var toolView: ToolView = ToolView(rootView.context),
     private var initTitle: String = ""
 ) : ToolViewActions {
 
