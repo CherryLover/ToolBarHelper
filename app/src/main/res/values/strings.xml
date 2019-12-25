@@ -35,4 +35,6 @@
     <string name="text_single_setMenu_textSize">设置菜单字体为 16</string>
     <string name="text_single_setMenu_textColor">设置菜单文字颜色为红色</string>
     <string name="text_custom_tip">演示自定义 ToolView 的创建与使用</string>
+    <string name="item_list_show_menu_check">显示右侧 CheckAll</string>
+    <string name="item_list_hide_menu_check">隐藏右侧 CheckAll</string>
 </resources>

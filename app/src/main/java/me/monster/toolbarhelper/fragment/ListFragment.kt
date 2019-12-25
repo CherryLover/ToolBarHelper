@@ -74,6 +74,8 @@ class ListFragment : BaseFragment(), ToolClickListener {
             2 -> toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             3 -> toolHelper?.setBackgroundRes(R.drawable.bg_color_gradient)
             4 -> toolHelper?.setPopProvider(NavPop)
+            5 -> toolHelper?.showCheckAll()
+            6 -> toolHelper?.hideCheckAll()
         }
     }
 
@@ -83,11 +85,15 @@ class ListFragment : BaseFragment(), ToolClickListener {
         val map2 = hashMapOf("text" to getString(R.string.item_list_change_menu_img))
         val map3 = hashMapOf("text" to getString(R.string.item_list_change_background))
         val map4 = hashMapOf("text" to getString(R.string.item_list_change_nav_click))
+        val map5 = hashMapOf("text" to getString(R.string.item_list_show_menu_check))
+        val map6 = hashMapOf("text" to getString(R.string.item_list_hide_menu_check))
         menuList.add(map)
         menuList.add(map1)
         menuList.add(map2)
         menuList.add(map3)
         menuList.add(map4)
+        menuList.add(map5)
+        menuList.add(map6)
     }
 
     private fun showMessage(message: String, destId: Int) {
