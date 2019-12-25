@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -19,9 +20,8 @@ import me.monster.toolbarhelper.toolview.tools.*
  * @author: Created jiangjiwei in 2019-09-19 16:51
  */
 class ToolView(context: Context, attributeSet: AttributeSet? = null) :
-    BaseToolView(context, attributeSet),
-    ToolViewActions {
-//    var listener: ToolClickListener? = null
+    FrameLayout(context, attributeSet), ToolViewActions {
+    var listener: ToolClickListener? = null
 
     private val vFakeStatus: View
     private val ivBack: ImageView
@@ -30,7 +30,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     private val ivMenuImg: ImageView
     private val clRoot: ConstraintLayout
 
-//    private var navInterceptor: Boolean = false
+    private var navInterceptor: Boolean = false
 
     var initTitle = ""
     var initMenu = ""
@@ -60,11 +60,11 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
             field = value
         }
 
-//    var popProvider: PopProvider? = null
-//        set(value) {
-//            navInterceptor = value != null
-//            field = value
-//        }
+    var popProvider: PopProvider? = null
+        set(value) {
+            navInterceptor = value != null
+            field = value
+        }
 
     var titleTextSize: Float = defaultTitleTextSize
         set(value) {
@@ -74,7 +74,8 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
             tvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, value)
             field = value
         }
-    var titleTextColor : Int = Color.WHITE
+
+    var titleTextColor: Int = Color.WHITE
         set(@ColorInt value) {
             tvTitle.setTextColor(value)
             field = value
@@ -106,15 +107,17 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
         menuImgVisible = ivMenuImg.visibility
         menuTextVisible = ivMenuImg.visibility
-        navIconVisible  = ivBack.visibility
+        navIconVisible = ivBack.visibility
 
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ToolView)
         val xmlVisible = typedArray.getInt(R.styleable.ToolView_navShow, 1)
         initTitle = typedArray.getString(R.styleable.ToolView_toolTitle) ?: ""
-        titleTextSize = typedArray.getDimension(R.styleable.ToolView_titleTextSize, defaultTitleTextSize)
+        titleTextSize =
+            typedArray.getDimension(R.styleable.ToolView_titleTextSize, defaultTitleTextSize)
         titleTextColor = typedArray.getColor(R.styleable.ToolView_titleTextColor, Color.WHITE)
         initMenu = typedArray.getString(R.styleable.ToolView_menuText) ?: ""
-        menuTextSize = typedArray.getDimension(R.styleable.ToolView_menuTextSize, defaultMenuTextSize)
+        menuTextSize =
+            typedArray.getDimension(R.styleable.ToolView_menuTextSize, defaultMenuTextSize)
         menuTextColor = typedArray.getColor(R.styleable.ToolView_menuTextColor, Color.BLACK)
         navIcon = typedArray.getResourceId(R.styleable.ToolView_navIcon, notFound)
         val menuIcon = typedArray.getResourceId(R.styleable.ToolView_menuImg, notFound)
@@ -122,7 +125,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
         configView(xmlVisible, navIcon, menuIcon)
 
-        ivBack.setOnClickListener { navClick(ivBack) }
+        ivBack.setOnClickListener { navClick() }
         tvTitle.setOnClickListener { listener?.onClick(title) }
         tvMenu.setOnClickListener { listener?.onClick(menu) }
         ivMenuImg.setOnClickListener { listener?.onClick(menuImg) }
@@ -149,13 +152,13 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         setMenuImg(menuIcon)
     }
 
-//    private fun navClick() {
-//        if (navInterceptor) {
-//            popProvider?.pop(ivBack)
-//        } else {
-//            listener?.onClick(navigation)
-//        }
-//    }
+    private fun navClick() {
+        if (navInterceptor) {
+            popProvider?.pop(ivBack)
+        } else {
+            listener?.onClick(navigation)
+        }
+    }
 
     override fun setTitle(title: String) {
         tvTitle.text = title
@@ -193,18 +196,18 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         clRoot.setBackgroundResource(resid)
     }
 
-//    companion object {
-//        const val notFound = -1
-//        val defaultTitleTextSize = 20.sp()
-//        val defaultMenuTextSize = 15.sp()
-//
-//        const val navigation = 1
-//        const val title = 2
-//        const val menu = 3
-//        const val menuImg = 4
-//
-//        const val nav_gone = View.GONE
-//        const val nav_visible = View.VISIBLE
-//        const val nav_invisible = View.INVISIBLE
-//    }
+    companion object {
+        const val notFound = -1
+        val defaultTitleTextSize = 20.sp()
+        val defaultMenuTextSize = 15.sp()
+
+        const val navigation = 1
+        const val title = 2
+        const val menu = 3
+        const val menuImg = 4
+
+        const val nav_gone = View.GONE
+        const val nav_visible = View.VISIBLE
+        const val nav_invisible = View.INVISIBLE
+    }
 }
