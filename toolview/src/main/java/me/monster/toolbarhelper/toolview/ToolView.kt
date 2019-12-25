@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.Placeholder
 import me.monster.toolbarhelper.toolview.nav.PopProvider
 import me.monster.toolbarhelper.toolview.tools.*
 
@@ -29,11 +30,15 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     private val tvMenu: TextView
     private val ivMenuImg: ImageView
     private val clRoot: ConstraintLayout
+    private val phRight: Placeholder
+    private val vEmpty: View
 
     private var navInterceptor: Boolean = false
 
-    var initTitle = ""
-    var initMenu = ""
+
+    private var initTitle = ""
+
+    private var initMenu = ""
 
     var menuImgVisible: Int = 0
         set(value) {
@@ -104,6 +109,8 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         tvTitle = findViewById(R.id.tv_tool_title)
         tvMenu = findViewById(R.id.tv_tool_menu)
         ivMenuImg = findViewById(R.id.img_tool_menu)
+        phRight = findViewById(R.id.ph_tool_right)
+        vEmpty = findViewById(R.id.v_tool_empty)
 
         menuImgVisible = ivMenuImg.visibility
         menuTextVisible = ivMenuImg.visibility
@@ -194,6 +201,14 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
 
     override fun setBackgroundResource(resid: Int) {
         clRoot.setBackgroundResource(resid)
+    }
+
+    fun showCheckAll() {
+        HolderHelper.showCheck(vEmpty, phRight, clRoot)
+    }
+
+    fun hideCheckAll() {
+        HolderHelper.hide(vEmpty, phRight, clRoot)
     }
 
     companion object {

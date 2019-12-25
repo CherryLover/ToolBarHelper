@@ -11,32 +11,44 @@
     <View
         android:id="@+id/v_tool_status_fake"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="20dp" />
+        android:layout_height="20dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_tool_back"
         android:layout_width="40dp"
         android:layout_height="48dp"
         android:layout_marginStart="15dp"
+        android:contentDescription="@string/nav_content_desc"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:contentDescription="@string/nav_content_desc"
-        app:layout_constraintTop_toTopOf="@id/tv_tool_title"
         android:src="@drawable/ic_arrow_back_black_24dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_tool_title" />
 
     <TextView
         android:id="@+id/tv_tool_title"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/v_tool_status_fake"
         android:gravity="center_vertical"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_tool_status_fake"
         tools:text="阅读列表" />
+
+    <androidx.constraintlayout.widget.Placeholder
+        android:id="@+id/ph_tool_right"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:foregroundGravity="center"
+        app:layout_constrainedWidth="true"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_tool_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_tool_title"
+        app:layout_constraintWidth_max="70dp" />
 
     <TextView
         android:id="@+id/tv_tool_menu"
@@ -56,11 +68,16 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="15dp"
-        android:visibility="gone"
         android:contentDescription="@string/menu_img_content_desc"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/tv_tool_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_tool_title"
         tools:src="@drawable/ic_send_black_24dp" />
+
+    <View
+        android:id="@+id/v_tool_empty"
+        android:layout_width="1dp"
+        android:layout_height="1dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

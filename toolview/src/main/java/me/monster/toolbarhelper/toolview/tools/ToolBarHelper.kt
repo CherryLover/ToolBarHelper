@@ -100,6 +100,14 @@ class ToolBarHelper(
         toolView.background = backgroundDrawable
     }
 
+    fun showCheckAll() {
+        toolView.showCheckAll()
+    }
+
+    fun hideCheckAll() {
+        toolView.hideCheckAll()
+    }
+
     private fun checkId(root: ViewGroup) {
         L.d("status id rootView Id ${root.id}")
         if (root.id == -1) {
