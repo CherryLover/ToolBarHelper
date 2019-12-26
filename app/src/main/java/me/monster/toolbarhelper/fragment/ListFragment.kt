@@ -74,8 +74,8 @@ class ListFragment : BaseFragment(), ToolClickListener {
             2 -> toolHelper?.setMenuImg(R.drawable.ic_send_black_24dp)
             3 -> toolHelper?.setBackgroundRes(R.drawable.bg_color_gradient)
             4 -> toolHelper?.setPopProvider(NavPop)
-            5 -> toolHelper?.showCheckAll()
-            6 -> toolHelper?.hideCheckAll()
+            5 -> toolHelper?.getDefaultHolderProvider()?.showCheck()
+            6 -> toolHelper?.getDefaultHolderProvider()?.hide()
         }
     }
 
