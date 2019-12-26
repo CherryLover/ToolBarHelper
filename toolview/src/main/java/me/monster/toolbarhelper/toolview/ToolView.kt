@@ -13,6 +13,8 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Placeholder
+import me.monster.toolbarhelper.toolview.holder.DefaultHolder
+import me.monster.toolbarhelper.toolview.holder.HolderProvider
 import me.monster.toolbarhelper.toolview.nav.PopProvider
 import me.monster.toolbarhelper.toolview.tools.*
 
@@ -203,12 +205,15 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         clRoot.setBackgroundResource(resid)
     }
 
-    fun showCheckAll() {
-        HolderHelper.showCheck(vEmpty, phRight, clRoot)
+    fun generateHolderProvider(): HolderProvider {
+        return DefaultHolder(vEmpty, clRoot, phRight)
     }
 
-    fun hideCheckAll() {
-        HolderHelper.hide(vEmpty, phRight, clRoot)
+    /**
+     * this array contains vEmpty clRoot phRight。Use them can build a HolderProvider
+     */
+    fun getHolderProviderRequires(): Array<View> {
+        return arrayOf(vEmpty, clRoot, phRight)
     }
 
     companion object {

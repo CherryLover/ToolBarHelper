@@ -9,6 +9,8 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import me.monster.toolbarhelper.toolview.ToolView
+import me.monster.toolbarhelper.toolview.holder.DefaultHolder
+import me.monster.toolbarhelper.toolview.holder.HolderProvider
 import me.monster.toolbarhelper.toolview.nav.PopProvider
 
 /**
@@ -28,8 +30,11 @@ class ToolBarHelper(
         initTitle: String = ""
     ) : this(rootView, closeToolView, ToolView(rootView.context), initTitle)
 
+    val holderProvider: HolderProvider
+
     init {
         addToolBar(rootView, closeToolView)
+        holderProvider = toolView.generateHolderProvider()
     }
 
     private fun addToolBar(root: View, closeToolView: View) {
@@ -100,12 +105,19 @@ class ToolBarHelper(
         toolView.background = backgroundDrawable
     }
 
-    fun showCheckAll() {
-        toolView.showCheckAll()
+    /**
+     * this array contains vEmpty clRoot phRight。Use them can build a HolderProvider
+     */
+    fun getHolderProviderRequires(): Array<View> {
+        return toolView.getHolderProviderRequires()
     }
 
-    fun hideCheckAll() {
-        toolView.hideCheckAll()
+    fun getDefaultHolderProvider(): DefaultHolder {
+        return if (holderProvider is DefaultHolder) {
+            holderProvider
+        } else {
+            toolView.generateHolderProvider() as DefaultHolder
+        }
     }
 
     private fun checkId(root: ViewGroup) {
