@@ -176,6 +176,7 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
     override fun setMenu(menu: String) {
         tvMenu.visible()
         ivMenuImg.gone()
+        hideHolder()
         tvMenu.text = menu
     }
 
@@ -186,7 +187,14 @@ class ToolView(context: Context, attributeSet: AttributeSet? = null) :
         }
         ivMenuImg.visible()
         tvMenu.gone()
+        hideHolder()
         ivMenuImg.setImageResource(id)
+    }
+
+    private fun hideHolder() {
+        val lastContent = phRight.content
+        phRight.setContentId(-1)
+        lastContent?.gone()
     }
 
     override fun setBgColor(id: Int) {

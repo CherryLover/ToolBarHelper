@@ -2,8 +2,12 @@ package me.monster.toolbarhelper.toolview.holder
 
 import android.content.Context
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Placeholder
+import me.monster.toolbarhelper.toolview.R
+import me.monster.toolbarhelper.toolview.tools.inVisible
 
 /**
  * @description
@@ -39,7 +43,13 @@ abstract class HolderProvider(
     }
 
     fun showView(type: Int) {
+        hideMenu()
         phRt.setContentId(addView(type))
+    }
+
+    fun hideMenu() {
+        clRoot.findViewById<ImageView>(R.id.img_tool_menu)?.inVisible()
+        clRoot.findViewById<TextView>(R.id.tv_tool_menu)?.inVisible()
     }
 
     /**
