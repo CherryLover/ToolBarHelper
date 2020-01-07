@@ -32,6 +32,9 @@ versions.espresso_core = "3.2.0"
 //Project build.gradle
 versions.build_gradle = "3.5.0"
 
+versions.robolectric = "4.3"
+versions.frag_test = "1.1.0"
+
 
 
 def deps = [:]
@@ -54,5 +57,8 @@ def navigation = [:]
 navigation.navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.nav"
 navigation.navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.nav"
 deps.navigation = navigation
+
+deps.robolectric = "org.robolectric:robolectric:$versions.robolectric"
+deps.frag_test = "androidx.fragment:fragment-testing:$versions.frag_test"
 
 ext.deps = deps

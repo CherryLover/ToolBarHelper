@@ -21,6 +21,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -32,6 +38,8 @@ dependencies {
     implementation deps.legacy_support_v4
     implementation deps.junit
     implementation deps.test_runner
+    testImplementation deps.robolectric
+    debugImplementation deps.frag_test
     implementation deps.espresso_core
     implementation deps.navigation.navigation_fragment_ktx
     implementation deps.navigation.navigation_ui_ktx
