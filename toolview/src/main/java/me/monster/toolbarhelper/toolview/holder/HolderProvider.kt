@@ -22,6 +22,9 @@ abstract class HolderProvider(
     fun hide() {
         var removeViewAt = -1
         for (i in 0..clRoot.childCount) {
+            if (phRt.content == null) {
+                continue
+            }
             if (clRoot.getChildAt(i).id == phRt.content.id) {
                 removeViewAt = i
                 break
